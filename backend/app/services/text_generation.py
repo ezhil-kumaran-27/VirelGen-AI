@@ -18,7 +18,7 @@ def generate_marketing_copy(text_prompt: str) -> str:
                     "content": text_prompt
                 }
             ],
-            model="llama3-70b-8192",
+            model="llama-3.3-70b-versatile",
             temperature=0.8,
             max_tokens=1024,
         )
