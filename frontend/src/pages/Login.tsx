@@ -20,7 +20,7 @@ export default function Login() {
     
     try {
       if (isLogin) {
-        const formData = new FormData();
+        const formData = new URLSearchParams();
         formData.append('username', email);
         formData.append('password', password);
         
@@ -30,7 +30,7 @@ export default function Login() {
       } else {
         await api.post('/auth/signup', { email, password });
         // After signup, login
-        const formData = new FormData();
+        const formData = new URLSearchParams();
         formData.append('username', email);
         formData.append('password', password);
         const res = await api.post('/auth/login', formData);
