@@ -3,11 +3,7 @@ import { useAuthStore } from '../store/authStore';
 import { LayoutDashboard, Settings, History, LogOut, Zap } from 'lucide-react';
 
 export default function DashboardLayout() {
-  const { token, logout } = useAuthStore();
-
-  if (!token) {
-    return <Navigate to="/login" replace />;
-  }
+  // Authentication bypassed for free usage
 
   return (
     <div className="min-h-screen bg-background text-textMain flex">
@@ -38,13 +34,7 @@ export default function DashboardLayout() {
         </nav>
 
         <div className="p-4 mt-auto">
-          <button 
-            onClick={logout}
-            className="flex items-center gap-3 px-4 py-3 w-full rounded-lg hover:bg-red-500/10 hover:text-red-400 transition-colors text-textMuted"
-          >
-            <LogOut className="w-5 h-5" />
-            <span>Log out</span>
-          </button>
+          {/* Logout removed */}
         </div>
       </aside>
 

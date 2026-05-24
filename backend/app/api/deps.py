@@ -9,27 +9,20 @@ from app.schemas.user import TokenPayload
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{settings.API_V1_STR}/auth/login")
 
-def get_current_user(
-    db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)
-) -> User:
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
-    try:
-        payload = jwt.decode(
-            token, settings.JWT_SECRET_KEY, algorithms=[settings.ALGORITHM]
-        )
-        token_data = TokenPayload(**payload)
-        if token_data.sub is None:
-            raise credentials_exception
-    except JWTError:
-        raise credentials_exception
+def get_current_user(db: Session = Depends(get_db)) -> User:
+    # Bypassed authentication: auto-provision a default user
+    demo_email = "demo@viralgen.ai"
+    user = db.query(User).filter(User.email == demo_email).first()
     
-    user = db.query(User).filter(User.id == int(token_data.sub)).first()
-    if user is None:
-        raise credentials_exception
-    if not user.is_active:
-        raise HTTPException(status_code=400, detail="Inactive user")
+    if not user:
+        from app.core.security import get_password_hash
+        user = User(
+            email=demo_email,
+            password_hash=get_password_hash("auto-provisioned"),
+            is_active=True
+        )
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+        
     return user
