@@ -2,13 +2,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0f172a;
-  --color-surface: #1e293b;
-  --color-primary: #3b82f6;
-  --color-secondary: #8b5cf6;
-  --color-accent: #10b981;
-  --color-textMain: #f8fafc;
-  --color-textMuted: #94a3b8;
+  --color-background: #061121; /* Very dark blue for contrast */
+  --color-surface: #4993fa; /* Palette darkest blue */
+  --color-primary: #9dc6ff; /* Palette mid blue */
+  --color-secondary: #a0e4f1; /* Palette light aqua */
+  --color-accent: #f1fafb; /* Palette lightest */
+  --color-textMain: #f1fafb; /* Lightest for text */
+  --color-textMuted: #a0e4f1; /* Aqua for muted text */
   --font-sans: 'Inter', sans-serif;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .glass {
-  background-color: rgba(30, 41, 59, 0.5); /* surface/50 */
+  background-color: rgba(73, 147, 250, 0.15); /* Surface (#4993fa) with opacity */
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(160, 228, 241, 0.15); /* Secondary (#a0e4f1) with opacity */
 }

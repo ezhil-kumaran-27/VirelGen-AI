@@ -105,13 +105,13 @@ export default function Dashboard() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm text-textMuted mb-2">Platform</label>
-                <select value={formData.platform} onChange={e => setFormData({...formData, platform: e.target.value})} className="w-full bg-[#1e293b] border border-white/10 rounded-lg px-4 py-2.5 focus:outline-none focus:border-primary/50 text-white">
+                <select value={formData.platform} onChange={e => setFormData({...formData, platform: e.target.value})} className="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 focus:outline-none focus:border-primary/50 text-white">
                   {platforms.map(p => <option key={p} value={p}>{p}</option>)}
                 </select>
               </div>
               <div>
                 <label className="block text-sm text-textMuted mb-2">Tone of Voice</label>
-                <select value={formData.tone} onChange={e => setFormData({...formData, tone: e.target.value})} className="w-full bg-[#1e293b] border border-white/10 rounded-lg px-4 py-2.5 focus:outline-none focus:border-primary/50 text-white">
+                <select value={formData.tone} onChange={e => setFormData({...formData, tone: e.target.value})} className="w-full bg-surface border border-white/10 rounded-lg px-4 py-2.5 focus:outline-none focus:border-primary/50 text-white">
                   {tones.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>

@@ -10,7 +10,7 @@ export default function DashboardLayout() {
       {/* Sidebar */}
       <aside className="w-64 glass hidden md:flex flex-col border-r border-white/10">
         <div className="p-6 flex items-center justify-center">
-          <img src="/logo.png" alt="ViralGen AI Logo" className="max-h-16 w-auto object-contain" />
+          <img src="/ViralGen%20AI%20logo.png" alt="ViralGen AI Logo" className="max-h-16 w-auto object-contain" />
         </div>
 
         <nav className="flex-1 px-4 space-y-2 mt-4">
