@@ -9,15 +9,10 @@ export default function DashboardLayout() {
     <div className="min-h-screen bg-background text-textMain flex">
       {/* Sidebar */}
       <aside className="w-64 glass hidden md:flex flex-col border-r border-white/10">
-        <div className="p-6 flex items-center gap-3">
-          <div className="p-2 bg-gradient-to-br from-primary to-secondary rounded-lg shadow-lg">
-            <Zap className="w-6 h-6 text-white" />
-          </div>
-          <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-            ViralGen AI
-          </h1>
+        <div className="p-6 flex items-center justify-center">
+          <img src="/logo.png" alt="ViralGen AI Logo" className="max-h-16 w-auto object-contain" />
         </div>
-        
+
         <nav className="flex-1 px-4 space-y-2 mt-4">
           <Link to="/" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition-colors text-textMuted hover:text-white">
             <LayoutDashboard className="w-5 h-5" />

@@ -54,7 +54,8 @@ export default function Login() {
         animate={{ opacity: 1, y: 0 }}
         className="glass p-10 rounded-2xl w-full max-w-md border border-white/10 shadow-2xl z-10"
       >
-        <div className="text-center mb-10">
+        <div className="text-center mb-10 flex flex-col items-center">
+          <img src="/logo.png" alt="ViralGen AI Logo" className="h-20 w-auto object-contain mb-4" />
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2">
             ViralGen AI
           </h1>
