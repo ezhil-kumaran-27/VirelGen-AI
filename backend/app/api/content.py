@@ -27,6 +27,7 @@ class GenerationResponse(BaseModel):
     task_id: str
     status: str
     message: str
+    generated_text: str | None = None
 
 @router.post("/generate", response_model=GenerationResponse)
 def generate_campaign(request: CampaignRequest, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
@@ -74,7 +75,8 @@ def generate_campaign(request: CampaignRequest, db: Session = Depends(get_db), c
         "generation_id": generation.id,
         "task_id": task.id,
         "status": "Pending",
-        "message": "Campaign text generated successfully. Image generation in progress."
+        "message": "Campaign text generated successfully. Image generation in progress.",
+        "generated_text": generated_text
     }
 
 @router.get("/status/{generation_id}")

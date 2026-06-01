@@ -47,8 +47,10 @@ export default function Dashboard() {
       interval = setInterval(async () => {
         try {
           const res = await api.get(`/content/status/${result.generation_id}`);
+          // Always update the result so we instantly get intermediate data like the generated text
+          setResult((prev: any) => ({ ...prev, ...res.data }));
+          
           if (res.data.status === 'Completed' || res.data.status === 'Failed') {
-            setResult((prev: any) => ({ ...prev, ...res.data }));
             setPolling(false);
             setLoading(false);
             clearInterval(interval);
