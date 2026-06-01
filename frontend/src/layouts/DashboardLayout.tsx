@@ -1,6 +1,5 @@
-import { Outlet, Navigate, Link } from 'react-router-dom';
-import { useAuthStore } from '../store/authStore';
-import { LayoutDashboard, Settings, History, LogOut, Zap } from 'lucide-react';
+import { Outlet, Link } from 'react-router-dom';
+import { LayoutDashboard, Settings, History } from 'lucide-react';
 
 export default function DashboardLayout() {
   // Authentication bypassed for free usage

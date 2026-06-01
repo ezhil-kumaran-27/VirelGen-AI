@@ -20,11 +20,11 @@ def generate_marketing_image(image_prompt: str) -> str:
     }
     
     payload = {
-        "model": "dall-e-3",
+        "model": "dall-e-2",
         "prompt": image_prompt,
         "n": 1,
-        "size": "1024x1024",
-        "response_format": "b64_json"
+        "size": "512x512",
+        "response_format": "url"
     }
     
     try:
@@ -32,23 +32,13 @@ def generate_marketing_image(image_prompt: str) -> str:
         response.raise_for_status()
         result = response.json()
         
-        # In a real scenario, you could decode the b64 json to a buffer and upload to Cloudinary.
-        # Alternatively, request an 'url' response format and download it.
-        # Here we simulate fetching the URL from DALL-E response format if "url" was used.
-        # But since we used b64_json:
-        import base64
-        image_data = base64.b64decode(result['data'][0]['b64_json'])
-        image_buffer = io.BytesIO(image_data)
+        # Get the URL directly from OpenAI
+        image_url = result['data'][0]['url']
         
-        # Add basic watermark/composition if needed (PIL)
-        # img = Image.open(image_buffer)
-        # ... process img ...
-        # temp_buffer = io.BytesIO()
-        # img.save(temp_buffer, format="PNG")
-        # temp_buffer.seek(0)
+        # Cloudinary can upload directly from a remote URL, bypassing local download
+        from app.services.cloudinary_service import upload_image_to_cloudinary
+        cloudinary_url = upload_image_to_cloudinary(image_url)
         
-        # Upload to Cloudinary
-        cloudinary_url = upload_image_buffer_to_cloudinary(image_buffer.getvalue())
         return cloudinary_url
         
     except Exception as e:
